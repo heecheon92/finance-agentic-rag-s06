@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""회차 확인.
+"""회차별 자동 확인.
 
-    python scripts/check_session.py 5        →  results/check_s05.json
+    python scripts/check_session.py 3        →  results/check_s03.json
 
-회차 끝에 이걸 돌려서 나온 JSON 을 커밋합니다. 그 파일이 제출물입니다.
-강사는 그 파일들을 모아 표로 보고 빨간 칸만 확인합니다.
+학생은 회차 끝에 이걸 돌려서 나온 JSON 을 커밋한다. 강사는 collect_results.py 로
+6명분을 표로 모아 빨간 칸만 본다. 사람이 하나씩 열어 보는 일을 없애려는 장치다.
 """
 from __future__ import annotations
 
@@ -27,20 +27,61 @@ def ok(cond: bool, detail: str = "") -> dict:
 
 
 def _json(path: Path) -> dict | None:
-    if not path.exists():
-        return None
     try:
         return json.loads(path.read_text(encoding="utf-8"))
-    except json.JSONDecodeError:
+    except Exception:
         return None
 
 
 def _lines(path: Path) -> int:
-    if not path.exists():
+    try:
+        return sum(1 for l in path.open(encoding="utf-8") if l.strip())
+    except Exception:
         return 0
-    return sum(1 for l in path.open(encoding="utf-8") if l.strip())
 
 
+def check_s00() -> dict:
+    """0회차. 판정 로직은 check_env.py 한 곳에만 두고 여기서는 불러 쓴다.
+
+    같은 검사를 두 벌 유지하면 반드시 어긋난다. 예전 판정은 data/raw 파일 개수만 셌는데,
+    bundled 문서는 data/bundled 로 가고 열화본은 raw 에 같이 있어서 개수가 맞아도
+    빠진 문서가 있을 수 있었다.
+    """
+    import check_env as ce               # 같은 scripts/ 안에 있다
+
+    env = ce.read_env_file(ROOT / ".env")
+    corpus_status, corpus_detail = ce.check_corpus()
+    model_status, model_detail = ce.check_models(env)
+
+    report = _json(ROOT / "results" / "check_env.json")
+    failed = [name for name, c in (report or {}).get("checks", {}).items()
+              if c.get("required") and c.get("status") == "fail"]
+    return {
+        "환경 점검 실행": ok(report is not None,
+                       "results/check_env.json" if report else
+                       "없음 → python scripts/check_env.py 를 먼저 돌리세요"),
+        "환경 점검 통과": ok(bool(report and report.get("required_ok")),
+                       f"미통과: {', '.join(failed)}" if failed else
+                       (report or {}).get("platform", "")),
+        "코퍼스": ok(corpus_status == ce.OK, corpus_detail),
+        "모델 캐시": ok(model_status == ce.OK, model_detail),
+    }
+
+
+# 디스커버리 노트에 반드시 있어야 하는 절. 템플릿의 제목과 같아야 한다.
+DISCOVERY_SECTIONS = ["이해관계자", "현재 워크플로우", "성공 지표", "데이터와 망 제약",
+                      "비범위", "리스크", "PoC 범위", "데이터 소싱", "SOW-lite"]
+# 품질 분류표에서 학생이 판단해 채우는 열
+QUALITY_JUDGED = ["형식분류", "수집상태", "처리방침", "우선순위", "근거"]
+
+
+def check_s01() -> dict:
+    # 1회차는 제출물이 없다(강사 시연 + 문서 살펴보기). 확인할 것이 없으므로 항상 통과한다.
+    return {"1회차": ok(True, "제출물이 없습니다. 확인할 항목이 없습니다")}
+
+
+# 청크 ID 는 {doc_id}#{조항}#{seq} 로 결정적이어야 한다. 같은 입력이면 같은 ID 가
+# 나와야 골든셋의 gold_chunk_ids 가 다음 회차에도 그대로 가리킨다.
 CHUNK_ID = re.compile(r"^[^#]+#[^#]*#\d+$")
 GATE_VERDICTS = {"pass", "reparse", "ocr"}
 
@@ -229,12 +270,78 @@ def check_s05() -> dict:
     }
 
 
-CHECKS = {2: check_s02, 3: check_s03, 4: check_s04, 5: check_s05}
+def check_s06() -> dict:
+    from finrag.settings import get_settings
+    s = get_settings()
+    cmp_path = s.results_dir / "compare.csv"
+    rows = list(cmp_path.open(encoding="utf-8")) if cmp_path.exists() else []
+    header = rows[0].strip().split(",") if rows else []
+    has_frr = any(",false_refusal_rate," in r for r in rows)
+    has_abst = any(",abstain_accuracy," in r for r in rows)
+    jd = _json(s.results_dir / "judge.json") or {}
+    ce = _json(s.results_dir / "calc_e2e.json") or {}
+    # ROI 1쪽은 6회차 과제다. 템플릿을 복사만 하고 빈칸(____)을 남겨 두면 안 낸 것이다.
+    roi = ROOT / "docs" / "roi.md"
+    if not roi.exists():
+        roi_ok = ok(False, "docs/roi.md 가 없다 (docs/templates/roi.md 를 복사해 채운다)")
+    else:
+        blanks = roi.read_text(encoding="utf-8").count("____")
+        roi_ok = ok(blanks == 0, f"빈칸 {blanks}곳 남음" if blanks else f"{len(roi.read_text(encoding='utf-8')):,}자")
+    return {
+        "3단계 비교표": ok(len(header) >= 5 and {"baseline", "hybrid", "agentic"} <= set(header),
+                      f"열 {header}" if header else "results/compare.csv 없음 (make compare)"),
+        "오거절률·미답변 정확도 행": ok(has_frr and has_abst,
+                              "둘 다 있음" if has_frr and has_abst else "compare.csv 에 false_refusal_rate / abstain_accuracy 행이 없다"),
+        "judge 20문항": ok(jd.get("n", 0) >= 20 and jd.get("llm") != "fake",
+                        f"{jd.get('n', 0)}문항 평균 {jd.get('mean_total')}/6" + (" (가짜 모델)" if jd.get("llm") == "fake" else "")
+                        if jd else "results/judge.json 없음 (make judge)"),
+        "계산 정확도 기록": ok(ce.get("n", 0) >= 15, f"{ce.get('matched')}/{ce.get('n')} 맞음" if ce else "results/calc_e2e.json 없음 (make calc-e2e)"),
+        "ROI 문서": roi_ok,
+    }
+
+
+def check_s07() -> dict:
+    import urllib.request
+    base = "http://localhost:8000"
+    out = {}
+    try:
+        with urllib.request.urlopen(f"{base}/health", timeout=5) as r:
+            h = json.loads(r.read())
+        out["/health 200"] = ok(h.get("status") == "ok", f"포인트 {h.get('points')}")
+    except Exception as e:
+        out["/health 200"] = ok(False, f"{type(e).__name__}")
+    try:
+        from finrag.settings import get_settings
+        req = urllib.request.Request(
+            f"{base}/ask", method="POST",
+            data=json.dumps({"question": "예금거래기본약관 제12조는 무엇인가요?"}).encode(),
+            headers={"Content-Type": "application/json", "X-API-Key": get_settings().api_key})
+        with urllib.request.urlopen(req, timeout=120) as r:
+            a = json.loads(r.read())
+        out["/ask 응답"] = ok(bool(a.get("sources")) and bool(a.get("basis_date")),
+                            f"sources {len(a.get('sources', []))}건")
+    except Exception as e:
+        out["/ask 응답"] = ok(False, f"{type(e).__name__}")
+    out["런북"] = ok((ROOT / "docs" / "runbook.md").exists())
+    out["보안 답변서"] = ok((ROOT / "docs" / "security_questionnaire.md").exists())
+    return out
+
+
+def check_s08() -> dict:
+    return {
+        "readout 1p": ok((ROOT / "docs" / "readout_1p.md").exists()),
+        "README": ok((ROOT / "README.md").exists()),
+        "ADR 3건 이상": ok(len(list((ROOT / "docs" / "adr").glob("*.md"))) >= 3,
+                        f"{len(list((ROOT / 'docs' / 'adr').glob('*.md')))}건"),
+    }
+
+
+CHECKS = {i: globals()[f"check_s{i:02d}"] for i in range(9)}
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("session", type=int, choices=sorted(CHECKS))
+    ap.add_argument("session", type=int, choices=range(9))
     args = ap.parse_args()
 
     try:

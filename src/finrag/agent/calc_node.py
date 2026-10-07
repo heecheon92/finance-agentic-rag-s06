@@ -116,6 +116,20 @@ def _from_question(spec: dict, missing: list[str]) -> bool:
     return any(m not in spec.get("from_document", {}) for m in missing)
 
 
+def _known_missing(spec: dict, missing: list[str]) -> list[str]:
+    """모델이 적은 missing 을 필수 파라미터 이름으로 좁힌다.
+
+    required 에 있는 이름이 문장 안에 들어 있으면 그 이름으로 본다. required 가 아닌 것은 버린다.
+    """
+    required = list(spec.get("required", []))
+    out = []
+    for m in missing:
+        for k in required:
+            if k in m and k not in out:
+                out.append(k)
+    return out
+
+
 def _coerce(params: dict) -> dict:
     """모델이 '10000' 이나 '1,095' 처럼 문자열로 준 숫자를 숫자로 바꾼다. 그대로 넘기면 서식 지정에서 죽는다."""
     out = {}
@@ -160,6 +174,10 @@ def calculate(state: dict) -> dict:
                 "notices": state.get("notices", []) + [reason]}
 
     spec = specs().get(ext.tool, {})
+    # 모델이 missing 에 적는 이름은 자유 문장이다("윤년이 끼는 경우 days_remaining", "입원 의료비 보험금 …").
+    # 함수가 아는 이름으로 옮기고, 필수가 아닌 항목(from_document 의 선택 파라미터)은 빠져도 계산을 막지 않는다.
+    # 선택 항목이 정말 필요하면 함수가 직접 "찾지 못했다"고 말한다(10/8 실측: C06 · C07 · C13 이 여기서 막혔었다).
+    ext.missing = _known_missing(spec, ext.missing)
     from_question = [k for k in spec.get("required", []) if k not in spec.get("from_document", {})]
     if from_question and not question_gives_values(question):
         # 질문이 금액을 안 줬는데 params 에 금액이 있다면 근거의 예시값이다. 계산하지 않는다.

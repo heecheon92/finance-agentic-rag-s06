@@ -77,10 +77,21 @@ def run(pipeline: Callable[[str], dict], name: str, *, limit: int | None = None,
 
     from ..llm import get_llm, is_fake
     fake = is_fake(get_llm("answer"))
+    n_err = sum(1 for r in rows if r.get("error"))
+    if n_err:
+        first = next(r["error"] for r in rows if r.get("error"))
+        print(f"\n[주의] {n_err}/{len(rows)} 문항이 예외로 실패해 error 행으로 적혔습니다(검색 0건 · 답 없음으로 집계됨). 첫 원인: {first[:120]}")
+        if n_err == len(rows):
+            raise SystemExit("전부 실패해 결과 파일을 쓰지 않습니다. NotImplementedError 면 그 실습 자리를 먼저 채우세요.")
+    try:
+        summary = aggregate(rows, KS)
+    except NotImplementedError:
+        # 6회차 실습 1 전. 12분 돌린 rows 를 버리지 않는다. make compare 가 rows 로 다시 집계한다.
+        summary = {"overall": {"note": "metrics.aggregate 가 비어 있어 요약을 못 냈습니다. 실습 1 을 채운 뒤 make compare 가 rows 로 다시 집계합니다"}, "by_type": {}}
     result = {"pipeline": name,
               "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
               "n": len(rows), "llm": "fake" if fake else get_settings().llm_model_main,
-              **aggregate(rows, KS), "rows": rows}
+              **summary, "rows": rows}
     if fake:
         # 가짜 모델은 항상 "근거가 충분하다"고 판정한다. 그래서 거절이 일어나지 않고
         # 답변률 100% · 오거절률 0% · 미답변 정확도 0% 가 나온다. 이 숫자를 성능으로
@@ -101,6 +112,9 @@ def save(result: dict, path: Path | None = None) -> Path:
 
 def print_summary(result: dict) -> None:
     o = result["overall"]
+    if "note" in o:
+        print(f"\n[{result['pipeline']}] {result['n']}문항 저장. {o['note']}")
+        return
     if result.get("warning"):
         print(f"\n  [주의] {result['warning']}")
     print(f"\n[{result['pipeline']}] {result['n']}문항  "
