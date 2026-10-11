@@ -13,6 +13,7 @@
                   강사 라벨과 일치도를 잰다. 자기 키로 돌려도 강사와 같은 답변을 채점하므로 비교가 된다.
   agreement     : 두 점수 열의 일치도(완전 일치 · ±1 · 평균 절대 오차). 6회차 실습 2.
 """
+
 from __future__ import annotations
 
 import json
@@ -52,25 +53,45 @@ class JudgeScore(BaseModel):
         return self.basis_match + self.numeric_ok + self.no_extra_claim
 
 
-PROMPT = ChatPromptTemplate.from_messages([
-    ("system", "너는 한국 금융문서 QA 채점자다. 아래 루브릭으로만 채점하라. "
-               "친절함·문장력은 채점 대상이 아니다.\n\n" + RUBRIC),
-    ("human", "질문: {question}\n\n정답 요지: {reference}\n\n"
-              "정답 근거(gold): {gold}\n\n제출 답변: {answer}\n\n인용한 청크: {cited}"),
-])
+PROMPT = ChatPromptTemplate.from_messages(
+    [
+        (
+            "system",
+            "너는 한국 금융문서 QA 채점자다. 아래 루브릭으로만 채점하라. "
+            "친절함·문장력은 채점 대상이 아니다.\n\n" + RUBRIC,
+        ),
+        (
+            "human",
+            "질문: {question}\n\n정답 요지: {reference}\n\n"
+            "정답 근거(gold): {gold}\n\n제출 답변: {answer}\n\n인용한 청크: {cited}",
+        ),
+    ]
+)
 
 
-def score_one(question: str, answer: str, reference: str, gold: list[str],
-              cited: list[str]) -> JudgeScore:
+def score_one(
+    question: str, answer: str, reference: str, gold: list[str], cited: list[str]
+) -> JudgeScore:
     llm = get_llm("judge", size="main")
     if is_fake(llm):
         # 키 없이도 형태는 유지한다. 근거 일치만 기계적으로 매긴다(모델 판단 아님).
         hit = 2 if set(cited) & set(gold) else 0
-        return JudgeScore(basis_match=hit, numeric_ok=0, no_extra_claim=0,
-                          reason="LLM 키가 없어 근거 일치만 기계 채점")
+        return JudgeScore(
+            basis_match=hit,
+            numeric_ok=0,
+            no_extra_claim=0,
+            reason="LLM 키가 없어 근거 일치만 기계 채점",
+        )
     chain = PROMPT | llm.with_structured_output(JudgeScore, method="json_schema")
-    out = chain.invoke({"question": question, "answer": answer, "reference": reference,
-                        "gold": ", ".join(gold[:5]), "cited": ", ".join(cited[:8])})
+    out = chain.invoke(
+        {
+            "question": question,
+            "answer": answer,
+            "reference": reference,
+            "gold": ", ".join(gold[:5]),
+            "cited": ", ".join(cited[:8]),
+        }
+    )
     return out if isinstance(out, JudgeScore) else JudgeScore(**dict(out))
 
 
@@ -80,8 +101,13 @@ JUDGE_SET = [f"S{i:02d}" for i in list(range(1, 15)) + list(range(20, 26))]
 ITEMS = ("basis_match", "numeric_ok", "no_extra_claim")
 
 
-def score_result(result: dict, golden: list[dict], gold_ids: dict[str, list[str]],
-                 ids: list[str] | None = None, verbose: bool = False) -> dict:
+def score_result(
+    result: dict,
+    golden: list[dict],
+    gold_ids: dict[str, list[str]],
+    ids: list[str] | None = None,
+    verbose: bool = False,
+) -> dict:
     """결과 파일의 답변을 루브릭으로 채점한다. 거절한 문항은 0점이 아니라 '채점 제외'로 둔다.
 
     거절은 답변 품질이 아니라 오거절률이 보는 것이다. 여기서 0점을 주면 두 지표가 같은 실수를
@@ -97,18 +123,31 @@ def score_result(result: dict, golden: list[dict], gold_ids: dict[str, list[str]
         if row is None:
             continue
         answered = bool(row.get("answered")) and bool(row.get("answer"))
-        cited = row.get("chunk_ids") or ([row["top_chunk"]] if row.get("top_chunk") else [])
+        cited = row.get("chunk_ids") or (
+            [row["top_chunk"]] if row.get("top_chunk") else []
+        )
         out = {"id": item["id"], "type": item.get("type"), "answered": answered}
         if answered:
-            sc = score_one(item["question"], row["answer"], item.get("answer", ""),
-                           gold_ids.get(item["id"], []), cited)
+            sc = score_one(
+                item["question"],
+                row["answer"],
+                item.get("answer", ""),
+                gold_ids.get(item["id"], []),
+                cited,
+            )
             out.update({k: getattr(sc, k) for k in ITEMS})
             out["total"] = sc.total
             out["reason"] = sc.reason
         rows.append(out)
         if verbose:
-            mark = f"{out['total']}/6  {out['basis_match']}·{out['numeric_ok']}·{out['no_extra_claim']}" if answered else "거절(채점 제외)"
-            print(f"  {item['id']} {str(item.get('type', ''))[:6]:8} {mark}  {out.get('reason', '')[:50]}")
+            mark = (
+                f"{out['total']}/6  {out['basis_match']}·{out['numeric_ok']}·{out['no_extra_claim']}"
+                if answered
+                else "거절(채점 제외)"
+            )
+            print(
+                f"  {item['id']} {str(item.get('type', ''))[:6]:8} {mark}  {out.get('reason', '')[:50]}"
+            )
     scored = [r for r in rows if r["answered"]]
     n = len(scored) or 1
 
@@ -118,13 +157,23 @@ def score_result(result: dict, golden: list[dict], gold_ids: dict[str, list[str]
     by_type: dict[str, list[dict]] = {}
     for r in scored:
         by_type.setdefault(r["type"], []).append(r)
-    return {"n": len(rows), "n_scored": len(scored), "n_refused": len(rows) - len(scored),
-            "mean_total": mean("total", scored),
-            "mean_by_item": {k: mean(k, scored) for k in ITEMS},
-            "full_marks": sum(1 for r in scored if r["total"] == 6),
-            "by_type": {t: {"n": len(rs), "mean_total": mean("total", rs),
-                            **{k: mean(k, rs) for k in ITEMS}} for t, rs in sorted(by_type.items())},
-            "rows": rows}
+    return {
+        "n": len(rows),
+        "n_scored": len(scored),
+        "n_refused": len(rows) - len(scored),
+        "mean_total": mean("total", scored),
+        "mean_by_item": {k: mean(k, scored) for k in ITEMS},
+        "full_marks": sum(1 for r in scored if r["total"] == 6),
+        "by_type": {
+            t: {
+                "n": len(rs),
+                "mean_total": mean("total", rs),
+                **{k: mean(k, rs) for k in ITEMS},
+            }
+            for t, rs in sorted(by_type.items())
+        },
+        "rows": rows,
+    }
 
 
 def load_calibration(path: Path) -> list[dict]:
@@ -138,26 +187,51 @@ def calibrate(calib: list[dict], verbose: bool = False) -> dict:
     """
     rows = []
     for r in calib:
-        sc = score_one(r["question"], r["answer"], r.get("reference", ""), r.get("gold", []),
-                       r.get("cited", []))
+        sc = score_one(
+            r["question"],
+            r["answer"],
+            r.get("reference", ""),
+            r.get("gold", []),
+            r.get("cited", []),
+        )
         h = r["human"]
-        row = {"id": r["id"], "judge": {k: getattr(sc, k) for k in ITEMS},
-               "human": {k: h[k] for k in ITEMS}, "judge_total": sc.total,
-               "human_total": sum(h[k] for k in ITEMS), "reason": sc.reason}
+        row = {
+            "id": r["id"],
+            "judge": {k: getattr(sc, k) for k in ITEMS},
+            "human": {k: h[k] for k in ITEMS},
+            "judge_total": sc.total,
+            "human_total": sum(h[k] for k in ITEMS),
+            "reason": sc.reason,
+        }
         rows.append(row)
         if verbose:
             d = row["judge_total"] - row["human_total"]
-            print(f"  {r['id']}  judge {row['judge_total']}/6  사람 {row['human_total']}/6  "
-                  f"{'=' if d == 0 else f'{d:+d}'}  {sc.reason[:50]}")
+            print(
+                f"  {r['id']}  judge {row['judge_total']}/6  사람 {row['human_total']}/6  "
+                f"{'=' if d == 0 else f'{d:+d}'}  {sc.reason[:50]}"
+            )
     try:
-        agree = {"total": agreement([r["judge_total"] for r in rows], [r["human_total"] for r in rows])}
+        agree = {
+            "total": agreement(
+                [r["judge_total"] for r in rows], [r["human_total"] for r in rows]
+            )
+        }
         for k in ITEMS:
-            agree[k] = agreement([r["judge"][k] for r in rows], [r["human"][k] for r in rows])
+            agree[k] = agreement(
+                [r["judge"][k] for r in rows], [r["human"][k] for r in rows]
+            )
     except NotImplementedError:
         # 실습 2 전. 채점 20번은 끝났으니 버리지 않고 문항별 비교만 돌려준다. agreement 를 채운 뒤 다시 돌리면 일치도가 붙는다.
         agree = None
-    bias = round(sum(r["judge_total"] - r["human_total"] for r in rows) / (len(rows) or 1), 3)
-    return {"n": len(rows), "agreement": agree, "judge_minus_human_avg": bias, "rows": rows}
+    bias = round(
+        sum(r["judge_total"] - r["human_total"] for r in rows) / (len(rows) or 1), 3
+    )
+    return {
+        "n": len(rows),
+        "agreement": agree,
+        "judge_minus_human_avg": bias,
+        "rows": rows,
+    }
 
 
 def agreement(judge_scores: list[int], human_labels: list[int]) -> dict:
@@ -169,5 +243,22 @@ def agreement(judge_scores: list[int], human_labels: list[int]) -> dict:
     [6회차 실습 2] 이 함수를 채우세요. 테스트는 tests/test_judge.py 입니다.
     왜 셋인가: 완전 일치만 보면 6점 척도에서 한 점 차이도 불일치가 되어 judge 가 쓸모없어 보이고,
     ±1 만 보면 늘 후하게 주는 judge 를 못 잡는다. MAE 가 그 치우침의 크기다.
+    한쪽만 비어 있어도 비교할 쌍이 없으므로 {"n": 0}을 반환한다.
     """
-    raise NotImplementedError("6회차 실습 2: judge.agreement 를 채우세요")
+    # raise NotImplementedError("6회차 실습 2: judge.agreement 를 채우세요")
+    n = min(len(judge_scores), len(human_labels))
+    if n == 0:
+        return {"n": 0}
+
+    exact = within_1 = total_error = 0
+    for score, label in zip(judge_scores, human_labels):
+        error = abs(score - label)
+        exact += error == 0
+        within_1 += error <= 1
+        total_error += error
+    return {
+        "n": n,
+        "exact": round(exact / n, 3),
+        "within_1": round(within_1 / n, 3),
+        "mae": round(total_error / n, 3),
+    }

@@ -1,0 +1,3346 @@
+{
+ "pipeline": "agentic",
+ "generated_at": "2026-10-09T12:46:21+00:00",
+ "n": 40,
+ "llm": "openai:gpt-5.4-mini",
+ "overall": {
+  "recall@1": 0.625,
+  "recall@3": 0.7,
+  "recall@5": 0.775,
+  "recall@10": 0.825,
+  "mrr": 0.6883,
+  "n": 40,
+  "answer_rate": 0.925,
+  "false_refusal_rate": 0.0789,
+  "abstain_accuracy": 1.0,
+  "latency_ms_avg": 11502.5,
+  "latency_ms_p95": 21159.0
+ },
+ "by_type": {
+  "계산형": {
+   "recall@1": 0.8,
+   "recall@3": 0.8,
+   "recall@5": 0.8,
+   "recall@10": 0.8,
+   "mrr": 0.8,
+   "n": 5,
+   "answer_rate": 1.0,
+   "false_refusal_rate": 0.0,
+   "latency_ms_avg": 14852.3,
+   "latency_ms_p95": 21159.0
+  },
+  "메타데이터형": {
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0,
+   "mrr": 1.0,
+   "n": 5,
+   "answer_rate": 1.0,
+   "false_refusal_rate": 0.0,
+   "latency_ms_avg": 8508.2,
+   "latency_ms_p95": 9301.8
+  },
+  "미답변형": {
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.5,
+   "recall@10": 1.0,
+   "mrr": 0.2083,
+   "n": 2,
+   "answer_rate": 1.0,
+   "abstain_accuracy": 1.0,
+   "latency_ms_avg": 19423.3,
+   "latency_ms_p95": 17984.7
+  },
+  "복합형": {
+   "recall@1": 0.6,
+   "recall@3": 0.6,
+   "recall@5": 0.6,
+   "recall@10": 0.6,
+   "mrr": 0.6,
+   "n": 5,
+   "answer_rate": 0.8,
+   "false_refusal_rate": 0.2,
+   "latency_ms_avg": 8197.9,
+   "latency_ms_p95": 9132.5
+  },
+  "상품명조건형": {
+   "recall@1": 0.5,
+   "recall@3": 0.6667,
+   "recall@5": 0.8333,
+   "recall@10": 1.0,
+   "mrr": 0.6444,
+   "n": 6,
+   "answer_rate": 1.0,
+   "false_refusal_rate": 0.0,
+   "latency_ms_avg": 8498.1,
+   "latency_ms_p95": 7512.9
+  },
+  "유사상품비교형": {
+   "recall@1": 0.6667,
+   "recall@3": 0.6667,
+   "recall@5": 0.6667,
+   "recall@10": 0.6667,
+   "mrr": 0.6667,
+   "n": 3,
+   "answer_rate": 1.0,
+   "false_refusal_rate": 0.0,
+   "latency_ms_avg": 12786.5,
+   "latency_ms_p95": 11095.7
+  },
+  "조항번호형": {
+   "recall@1": 0.5,
+   "recall@3": 0.625,
+   "recall@5": 0.75,
+   "recall@10": 0.75,
+   "mrr": 0.5938,
+   "n": 8,
+   "answer_rate": 0.875,
+   "false_refusal_rate": 0.125,
+   "latency_ms_avg": 12452.2,
+   "latency_ms_p95": 17962.8
+  },
+  "표수치형": {
+   "recall@1": 0.6667,
+   "recall@3": 0.8333,
+   "recall@5": 0.8333,
+   "recall@10": 0.8333,
+   "mrr": 0.75,
+   "n": 6,
+   "answer_rate": 0.8333,
+   "false_refusal_rate": 0.1667,
+   "latency_ms_avg": 12415.7,
+   "latency_ms_p95": 17136.4
+  }
+ },
+ "rows": [
+  {
+   "id": "S01",
+   "type": "조항번호형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 27968.9,
+   "top_chunk": "hanacard_std_2017#제31조#1",
+   "answered": true,
+   "answer": "제31조에서 정의하는 **일부결제금액이월약정(리볼빙)**이란,  \n회원이 카드이용대금 중 **카드사와 미리 약정한 최소결제비율 이상**을 결제하면, **다음 달 결제월에 남은 금액(잔여결제금액)과 리볼빙 수수료를 합산하여 납부하는 결제방식**을 말합니다.  \n또한 약정결제비율은 **이용금액의 10~100% 이내**에서 선택할 수 있고, 최소결제비율은 **10% 이상**으로 신용상태 등에 따라 차등 적용됩니다. [1]\n\n[1]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": "표준약관",
+    "issuer": "하나카드",
+    "product": "신용카드",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 3662,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 212,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 3450
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 2243,
+     "output_tokens": 162,
+     "total_tokens": 2405,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "hanacard_std_2017#제31조#1",
+    "hanacard_std_2017#제32조#1",
+    "hanacard_std_2017#제35조#1",
+    "hanacard_std_2017#제33조#1",
+    "hanacard_std_2017#제34조#1",
+    "hanacard_std_2017#제36조#1",
+    "hanacard_std_2017#제38조#1",
+    "hanacard_std_2017#제47조#1"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S02",
+   "type": "조항번호형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 8518.6,
+   "top_chunk": "abl_cancer_2404#제34조#2",
+   "answered": true,
+   "answer": "ABL 인터넷암보험Ⅲ 약관 제34조에 따르면, 해약환급금은 **산출방법서에 따라 계산**합니다. 또한 해약환급금 지급이 지연된 기간의 이자는 별표5의 “보험금을 지급할 때의 적립이율 계산”에 따릅니다. [1]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": "ABL생명",
+    "product": "암보험",
+    "generation": "3세대",
+    "effective_on": null,
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 2930,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 131,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 2799
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 4188,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 159,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4029
+    }
+   },
+   "chunk_ids": [
+    "abl_cancer_2404#제34조#2",
+    "abl_cancer_2404#제45조#9",
+    "abl_cancer_2404#제19조#7",
+    "abl_cancer_2404#제19조#9",
+    "abl_cancer_2404#제19조#11",
+    "abl_cancer_2404#제31조#2",
+    "abl_cancer_2404#제35조#2",
+    "abl_cancer_2404#제35조#3"
+   ],
+   "calc": {
+    "abstain_reason": "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S03",
+   "type": "조항번호형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 0.25,
+   "latency_ms": 12983.0,
+   "top_chunk": "hana_credit_terms_2013#제7조#1",
+   "answered": true,
+   "answer": "하나은행 여신거래기본약관(가계용) **제7조 제2항**에 따르면, 은행은 **기한의 이익 상실일 3영업일 전까지** 채무자에게 통지해야 합니다.  \n다만, **3영업일 전까지 통지하지 못한 경우**에는 **실제 통지가 도달한 날부터 3영업일이 경과한 날**에 기한의 이익을 상실합니다. [1]",
+   "grade": "sufficient",
+   "retry_count": 1,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": "하나은행",
+    "product": "여신거래",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 9789,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 483,
+     "input_token_details": {
+      "cache_read": 2816,
+      "audio": 0
+     },
+     "input_tokens": 9306
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3430,
+     "output_tokens": 113,
+     "total_tokens": 3543,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "hana_credit_terms_2013#제7조#1",
+    "hana_credit_terms_2024#제7조#3",
+    "hana_credit_terms_2024#제8조#1",
+    "hana_credit_terms_2024#제7조#1",
+    "hana_credit_terms_2024#제7조#2",
+    "hana_credit_terms_2013#제8조#1",
+    "hana_credit_terms_2009#제8조#1",
+    "hana_credit_terms_2009#제7조#1"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S04",
+   "type": "조항번호형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 0.0,
+   "latency_ms": 4930.0,
+   "top_chunk": "hana_credit_terms_2024#제12조#1",
+   "answered": false,
+   "answer": "문서에서 근거를 찾지 못했습니다. 질문을 조금 더 구체적으로 알려주시거나 상담 창구로 문의해 주세요.",
+   "grade": "none",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "abstain"
+   ],
+   "notices": [
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": null,
+    "product": "예금거래",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 3595,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 176,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 3419
+    }
+   },
+   "chunk_ids": [
+    "hana_credit_terms_2024#제12조#1",
+    "knia_18259#제32조#1",
+    "abl_cancer_2404#제12조#1",
+    "hana_credit_terms_2024#제11조#1",
+    "hana_credit_terms_2009#제7조#2",
+    "abl_cancer_2404#제108조#1",
+    "abl_cancer_2404#제45조#2",
+    "hana_credit_terms_2013#제13조#1"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 0.0
+  },
+  {
+   "id": "S05",
+   "type": "조항번호형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 0.0,
+   "latency_ms": 17962.8,
+   "top_chunk": "hana_credit_terms_2024#제4조의2#1",
+   "answered": true,
+   "answer": "제4조의2 근거에는 **대출계약 철회 “기한”이 며칠인지**가 직접 적혀 있지 않습니다. 다만 **「금융소비자 보호에 관한 법률」 제46조 및 관련 규정이 정하는 바에 따라** 철회할 수 있다고만 되어 있습니다. 따라서 이 자료만으로는 정확한 일수를 확인할 수 없습니다. [1]",
+   "grade": "insufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "관련 조항은 찾았지만 질문에 답하기에는 근거가 부족합니다. 확인된 내용만 안내드립니다."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": null,
+    "product": "여신거래",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 12489,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 634,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 11855
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 2769,
+     "output_tokens": 92,
+     "total_tokens": 2861,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "hana_credit_terms_2024#제4조의2#1",
+    "hana_credit_terms_2024#본문#1",
+    "hana_credit_terms_2013#제3조#2",
+    "hana_credit_terms_2024#제7조#2",
+    "hana_credit_terms_2013#제7조#2",
+    "hana_credit_terms_2024#제7조#3",
+    "hana_credit_terms_2024#제3조#2",
+    "hana_credit_terms_2009#제7조#2"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 0.0
+  },
+  {
+   "id": "S06",
+   "type": "조항번호형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 7082.5,
+   "top_chunk": "knia_18259#제7조#2",
+   "answered": true,
+   "answer": "KB 멀티플러스연금보험 약관 **제7조(청약의 철회)**에 따르면, 계약자는 **보험증권을 받은 날부터 15일 이내**에 청약을 철회할 수 있습니다.  \n다만 **청약한 날부터 30일을 초과한 경우**에는 철회할 수 없습니다.  \n또한 **진단계약, 보험기간이 1년 미만인 계약, 전문보험계약자가 체결한 계약**은 청약철회가 불가능합니다. [1]\n\n즉, 실제로는 **“보험증권 수령일 기준 15일 이내”이면서 “청약일 기준 30일 이내”**여야 합니다. [1]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": "KB국민카드",
+    "product": "연금보험",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 4642,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 233,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4409
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3233,
+     "output_tokens": 164,
+     "total_tokens": 3397,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "knia_18259#제7조#2",
+    "sf_silson_2605#제18조#4",
+    "abl_cancer_2404#제18조#4",
+    "abl_cancer_2404#제18조#2",
+    "sf_silson_2605#제20조#3",
+    "sf_silson_2605#제6조#2",
+    "knia_18259#제22조#5",
+    "sf_silson_2605#제6조#18"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S07",
+   "type": "조항번호형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 0.5,
+   "latency_ms": 6998.2,
+   "top_chunk": "abl_cancer_2404#제35조#2",
+   "answered": true,
+   "answer": "가입 후 1년 미만에 **암 진단이 확정되면 암진단급여금은 약정한 보험금의 50%를 지급**합니다.  \n다만, **보험금 지급기준표 기준 보험가입금액 1,000만원**인 경우에는 **1년미만 1,000만원**으로 기재되어 있습니다.  \n즉, 약관 제6조상 일반 원칙은 **50% 지급**이며, 별표의 지급기준표에는 **보험가입금액에 따른 1년미만 지급금액**이 따로 표시되어 있습니다.  \n기준일은 **계약일 기준 1년 미만**입니다. [2][5]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": "ABL생명",
+    "product": "인터넷암보험",
+    "generation": "3세대",
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5307,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 215,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 5092
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3887,
+     "output_tokens": 158,
+     "total_tokens": 4045,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "abl_cancer_2404#제35조#2",
+    "abl_cancer_2404#제6조#3",
+    "abl_cancer_2404#제7조#2",
+    "abl_cancer_2404#제45조#3",
+    "abl_cancer_2404#제45조#2",
+    "abl_cancer_2404#제7조#3",
+    "abl_cancer_2404#제35조#3",
+    "abl_cancer_2404#제45조#9"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S08",
+   "type": "조항번호형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 13174.0,
+   "top_chunk": "law_fcpa_xml#제19조#1",
+   "answered": true,
+   "answer": "제19조 제1항의 설명의무는, **금융상품판매업자등**이 **일반금융소비자**에게 이행해야 합니다.  \n이행 시점은 **일반금융소비자에게 계약 체결을 권유하는 경우**와 **일반금융소비자가 설명을 요청하는 경우**입니다.  \n또한 일반금융소비자가 **특정 사항만** 설명을 원하면 그 사항에 한정하여 설명하면 됩니다.  \n보험회사 임직원에 대해서는 이 규정이 준용되며, 이때 “금융상품판매업자등”은 “보험회사 임직원”으로 봅니다. [1][2][3][4]",
+   "grade": "sufficient",
+   "retry_count": 1,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": "법령",
+    "issuer": "법제처",
+    "product": null,
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 7642,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 584,
+     "input_token_details": {
+      "cache_read": 1792,
+      "audio": 0
+     },
+     "input_tokens": 7058
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 2342,
+     "output_tokens": 160,
+     "total_tokens": 2502,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "law_fcpa_xml#제19조#1",
+    "law_fcpa_xml#제101조의2#1",
+    "law_insurance_act_xml#제101조의2#2",
+    "law_insurance_act_xml#제101조의2#1",
+    "law_fcpa_xml#제19조#2",
+    "law_insurance_act_xml#제95조의2#1",
+    "law_fcpa_xml#제21조의2#1",
+    "law_fcpa_xml#제48조#2"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S09",
+   "type": "상품명조건형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 7512.9,
+   "top_chunk": "nh_jangbyeong_2026#본문#2",
+   "answered": true,
+   "answer": "아니요. 제공된 설명서에는 **산업기능요원은 가입대상이 아님**이라고 명시되어 있습니다. 가입대상은 현역병, 상근예비역, 의무경찰, 해양의무경찰, 의무소방원, 사회복무요원, 대체복무요원으로 적혀 있고, 현역병사와 동일한 급여체계를 적용받지 않는 기타 의무복무자에 산업기능요원이 포함된다고 되어 있습니다. 따라서 이 근거만 보면 **NH농협 장병내일준비적금은 산업기능요원이 가입할 수 없습니다.** [1][2]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "NH농협은행",
+    "product": "장병내일준비적금",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5045,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 147,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4898
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3726,
+     "output_tokens": 149,
+     "total_tokens": 3875,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "nh_jangbyeong_2026#본문#2",
+    "nh_jangbyeong_2026#본문#1",
+    "nh_jangbyeong_2026#본문#5",
+    "nh_jangbyeong_2026#본문#8",
+    "nh_jangbyeong_2026#본문#9",
+    "nh_jangbyeong_2026#본문#10",
+    "nh_jangbyeong_2026#본문#6",
+    "nh_jangbyeong_2026#본문#7"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S10",
+   "type": "상품명조건형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 6421.7,
+   "top_chunk": "nh_jangbyeong_2026#본문#2",
+   "answered": true,
+   "answer": "장병내일준비적금의 **계약기간**은 **1개월 이상 24개월 이내(월, 일 단위)**입니다.  \n또한 **은행 합산 월 저축한도**는 **고객별 월 55만원(월, 기준일: 해당 상품 설명서 작성기준일 2026. 1. 6.)**입니다. 다만, **한 은행의 월 저축한도는 최대 30만원까지** 설정 및 입금 가능합니다. [1]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": null,
+    "product": "장병내일준비적금",
+    "generation": null,
+    "effective_on": "latest",
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5129,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 195,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4934
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3764,
+     "output_tokens": 114,
+     "total_tokens": 3878,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "nh_jangbyeong_2026#본문#2",
+    "nh_jangbyeong_2026#본문#6",
+    "nh_jangbyeong_2026#본문#5",
+    "nh_jangbyeong_2026#본문#1",
+    "nh_jangbyeong_2026#본문#8",
+    "nh_jangbyeong_2026#본문#9",
+    "nh_jangbyeong_2026#본문#3",
+    "shinhan_orakssil_2025#본문#1"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S11",
+   "type": "상품명조건형",
+   "answerable": true,
+   "n_gold": 3,
+   "n_retrieved": 7,
+   "mrr": 1.0,
+   "latency_ms": 5691.9,
+   "top_chunk": "shinhan_orakssil_2025#본문#1",
+   "answered": true,
+   "answer": "신한은행 오락실적금의 **계약기간은 최소 50일 ~ 최대 56일**이고, **가입금액은 1천원 이상 10만원 이내**입니다. 다만 근거상 **매주 1천원 이상 10만원 이내**, **적금 기간 중 최대 80만원 납입 가능**으로도 안내되어 있습니다. [1][2]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "신한은행",
+    "product": "오락실적금",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 4942,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 151,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4791
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3629,
+     "output_tokens": 91,
+     "total_tokens": 3720,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "shinhan_orakssil_2025#본문#1",
+    "shinhan_orakssil_2025#본문#6",
+    "shinhan_orakssil_2025#본문#5",
+    "shinhan_orakssil_2025#본문#3",
+    "shinhan_orakssil_2025#본문#2",
+    "shinhan_orakssil_2025#본문#7",
+    "shinhan_orakssil_2025#본문#4"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S12",
+   "type": "상품명조건형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 0.2,
+   "latency_ms": 6962.7,
+   "top_chunk": "kakao_deposit_2026_pdf#본문#1",
+   "answered": true,
+   "answer": "카카오뱅크 정기예금의 최소 가입(납입)금액은 **100만원 이상**입니다. 기준일은 **2026.07.03. 현재**입니다. [1][4][5]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "카카오뱅크",
+    "product": "정기예금",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 4403,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 142,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4261
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 7114,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 135,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 6979
+    }
+   },
+   "chunk_ids": [
+    "kakao_deposit_2026_pdf#본문#1",
+    "kakao_deposit_special_2019#본문#1",
+    "kakao_deposit_special_2019#본문#2",
+    "kakao_deposit_2026_txt#본문#2",
+    "kakao_deposit_2026_txt#본문#5",
+    "kakao_deposit_2026_pdf#본문#2",
+    "kakao_deposit_2026_txt#본문#4",
+    "kakao_deposit_2026_txt#본문#1"
+   ],
+   "calc": {
+    "abstain_reason": "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   },
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S13",
+   "type": "상품명조건형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 0.5,
+   "latency_ms": 5262.2,
+   "top_chunk": "kakao_deposit_terms_2024#제1조#1",
+   "answered": true,
+   "answer": "카카오뱅크 정기예금 특약상 가입대상은 **만 14세 이상의 실명의 개인**입니다. [2]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": "특약",
+    "issuer": "카카오뱅크",
+    "product": "정기예금",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 2156,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 138,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 2018
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 852,
+     "output_tokens": 35,
+     "total_tokens": 887,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "kakao_deposit_terms_2024#제1조#1",
+    "kakao_deposit_terms_2024#제3조#1",
+    "kakao_deposit_terms_2024#제1조#5",
+    "kakao_deposit_terms_2024#제7조#1",
+    "kakao_deposit_terms_2024#제13조#1",
+    "kakao_deposit_terms_2024#제6조#1",
+    "kakao_deposit_terms_2024#제4조#1",
+    "kakao_deposit_terms_2024#제2조#1"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S14",
+   "type": "상품명조건형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 0.16666666666666666,
+   "latency_ms": 19136.9,
+   "top_chunk": "im_household_2025#본문#2",
+   "answered": true,
+   "answer": "iM뱅크 가계대출은 **대출만기까지 3년 이내**인 경우까지 중도상환수수료가 적용될 수 있고, **양 계약의 유지기간을 합하여 3년이 경과한 후 해지할 경우**에는 중도상환수수료가 면제됩니다.  \n다만, **“만기까지 얼마 남으면”**이라는 식으로 남은 기간 기준의 별도 면제 기준은 근거에 명시되어 있지 않습니다. 확인된 내용은 **대출취급일로부터 3년 경과 후** 면제 가능하다는 점입니다. [4][6]",
+   "grade": "insufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "질문에 값이 없어(amount, fee_rate_pct) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다.",
+    "관련 조항은 찾았지만 질문에 답하기에는 근거가 부족합니다. 확인된 내용만 안내드립니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "iM뱅크",
+    "product": "가계대출",
+    "generation": null,
+    "effective_on": "latest",
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 15298,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 619,
+     "input_token_details": {
+      "cache_read": 5632,
+      "audio": 0
+     },
+     "input_tokens": 14679
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8438,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 243,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 8195
+    }
+   },
+   "chunk_ids": [
+    "im_household_2025#본문#2",
+    "im_household_2025#본문#10",
+    "im_household_2025#본문#21",
+    "im_household_2025#본문#4",
+    "im_household_2025#본문#1",
+    "im_household_2025#본문#3",
+    "im_household_2025#본문#19",
+    "im_household_2025#본문#9"
+   ],
+   "calc": {
+    "abstain_reason": "질문에 값이 없어(amount, fee_rate_pct) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   },
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S15",
+   "type": "메타데이터형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 12632.0,
+   "top_chunk": "hana_credit_terms_2013#제7조#1",
+   "answered": true,
+   "answer": "2013년 7월 1일 시행 하나은행 여신거래기본약관(가계용) 기준으로, **기한의 이익 상실 사전 통지는 기한의 이익 상실일 3영업일 전까지** 해야 했습니다.  \n다만, 그때까지 통지하지 않으면 **실제 통지가 도달한 날부터 3영업일이 경과한 날**에 기한의 이익을 상실합니다. [1]\n\n근거가 부족한 부분 없이, 질문하신 “며칠 전까지”에 해당하는 답은 **3영업일 전**입니다. [1]",
+   "grade": "sufficient",
+   "retry_count": 1,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": "하나은행",
+    "product": "여신거래",
+    "generation": null,
+    "effective_on": "2013-07-01",
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 10214,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 566,
+     "input_token_details": {
+      "cache_read": 2816,
+      "audio": 0
+     },
+     "input_tokens": 9648
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3605,
+     "output_tokens": 144,
+     "total_tokens": 3749,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "hana_credit_terms_2013#제7조#1",
+    "hana_credit_terms_2013#제7조#2",
+    "hana_credit_terms_2009#제7조#1",
+    "hana_credit_terms_2013#제8조#1",
+    "hana_credit_terms_2009#제8조#1",
+    "hana_credit_terms_2009#제7조#2",
+    "hana_credit_terms_2013#제20조#1",
+    "hana_credit_terms_2013#본문#1"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S16",
+   "type": "메타데이터형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 8013.2,
+   "top_chunk": "hana_credit_terms_2013#제7조#1",
+   "answered": true,
+   "answer": "2024.10.17 판의 제7조 제1항에는 있고 2013.7.1 판에는 없는 사유는 다음 1가지입니다.\n\n- **개인회생절차 또는 파산절차의 신청이 있는 때**: 2024.10.17 판의 제7조 제1항 제5호에 새로 포함되어 있고, 2013.7.1 판의 동일 조항에는 없습니다.  \n  - 2013.7.1 판 제7조 제1항은 제5호가 **“도피 기타의 사유로 지급을 정지한 것으로 인정된 때”**까지이며,\n  - 2024.10.17 판은 그 다음에 **“개인회생절차 또는 파산절차의 신청이 있는 때”**가 추가되고, 기존 제5호의 내용이 제6호로 이동했습니다. [1][2]\n\n참고로, 2024.10.17 판 제7조 제1항은 2013.7.1 판보다 1개 사유가 더 많습니다. [1][2]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": "하나은행",
+    "product": "여신거래",
+    "generation": null,
+    "effective_on": "2024-10-17",
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5398,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 302,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 5096
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3859,
+     "output_tokens": 243,
+     "total_tokens": 4102,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "hana_credit_terms_2013#제7조#1",
+    "hana_credit_terms_2024#제7조#1",
+    "hana_credit_terms_2009#제7조#1",
+    "hana_credit_terms_2024#제7조#3",
+    "hana_credit_terms_2013#제7조#2",
+    "hana_credit_terms_2024#제8조#1",
+    "hana_credit_terms_2024#본문#1",
+    "hana_credit_terms_2009#제7조#2"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S17",
+   "type": "메타데이터형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 5706.9,
+   "top_chunk": "kakao_deposit_terms_2024#제5조#1",
+   "answered": true,
+   "answer": "카카오뱅크 정기예금 특약에서 정한 계약기간은 **1개월 이상 3년 이하**이며, **월 단위 또는 일 단위**로 정할 수 있습니다. [1]\n\n참고로 이 특약은 카카오뱅크 정기예금 거래에 적용됩니다. [2]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": "특약",
+    "issuer": "카카오뱅크",
+    "product": "정기예금",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 2360,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 140,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 2220
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 1042,
+     "output_tokens": 75,
+     "total_tokens": 1117,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "kakao_deposit_terms_2024#제5조#1",
+    "kakao_deposit_terms_2024#제1조#1",
+    "kakao_deposit_terms_2024#제7조#1",
+    "kakao_deposit_terms_2024#제1조#5",
+    "kakao_deposit_terms_2024#제9조#1",
+    "kakao_deposit_terms_2024#제6조#1",
+    "kakao_deposit_terms_2024#제10조#1",
+    "kakao_deposit_terms_2024#제8조#1"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S18",
+   "type": "메타데이터형",
+   "answerable": true,
+   "n_gold": 3,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 9301.8,
+   "top_chunk": "kbstar_deposit_2021#본문#1",
+   "answered": true,
+   "answer": "KB Star 정기예금 핵심설명서(2021.03) 기준 **만기 후 1개월 이내 이율은 `기본이율 × 50%`**입니다.  \n기준일은 **2021.03.24 현재**, 단위는 **연 %**입니다. 기본이율은 **신규가입일 당시 영업점에 고시된 계약기간별 이율(우대이율 제외)**을 뜻합니다. 다만 이 문서에는 **만기 후 1개월 이내의 “구체적인 숫자 이율”이 아니라 계산식만** 제시되어 있어, 실제 적용 이율은 기본이율을 알아야 산출됩니다. [2][3][1]\n\n이 문서를 근거로 답할 때 주의할 점은 다음입니다.  \n- **기준일 확인**: 이 문서의 수치는 **2021.03.24 기준, 세전**입니다. 현재 시점 이율로 단정하면 안 됩니다. [1][2][3]  \n- **기본이율과 구분**: 만기후이율은 **기본이율의 일정 비율**로 정해지므로, 기본이율을 따로 확인해야 합니다. [2][3]  \n- **우대이율 제외**: 기본이율은 **우대이율을 제외한 값**입니다. [2][3]  \n- **세전 기준**: 문서의 이율은 **세전**이므로, 실제 수령액과 다를 수 있습니다. [2][3]  \n- **문서 내 일부 항목은 다른 페이지에 분산**: 만기후이율 관련 설명이 여러 쪽에 나뉘어 있어, 한 문장만 떼어 해석하지 말고 함께 봐야 합니다. [2][3][4]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "근거 문서의 심의필 유효기간이 지났습니다(2023-02-01). 현행 조건은 다를 수 있습니다."
+   ],
+   "filters": {
+    "doc_type": "상품설명서",
+    "issuer": "KB국민카드",
+    "product": "정기예금",
+    "generation": null,
+    "effective_on": "2021-03-01",
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5201,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 268,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4933
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3719,
+     "output_tokens": 402,
+     "total_tokens": 4121,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "kbstar_deposit_2021#본문#1",
+    "kbstar_deposit_2021#본문#5",
+    "kbstar_deposit_2021#본문#4",
+    "kbstar_deposit_2021#본문#3",
+    "woorisb_rotating_html#본문#3",
+    "shinhan_orakssil_2025#본문#3",
+    "kbstar_deposit_2021#본문#2",
+    "woorisb_rotating_html#본문#2"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S19",
+   "type": "메타데이터형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 6887.2,
+   "top_chunk": "kakao_deposit_special_2019#본문#2",
+   "answered": true,
+   "answer": "카카오뱅크 특별판매 정기예금 상품설명서(2019.07)의 준법감시인 심의필 번호는 **19-251**이고, 유효기간은 **2019.07.15 ~ 2020.07.14**입니다. [1]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": "상품설명서",
+    "issuer": "카카오뱅크",
+    "product": "정기예금",
+    "generation": null,
+    "effective_on": "2019-07-01",
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 4622,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 199,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4423
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3225,
+     "output_tokens": 67,
+     "total_tokens": 3292,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "kakao_deposit_special_2019#본문#2",
+    "kakao_deposit_2026_pdf#본문#2",
+    "kakao_deposit_2026_txt#본문#4",
+    "kakao_deposit_2026_txt#본문#1",
+    "kakao_deposit_special_2019#본문#1",
+    "kakao_deposit_2026_pdf#본문#1",
+    "kakao_deposit_2026_txt#본문#12",
+    "kakao_deposit_2026_txt#본문#5"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S20",
+   "type": "표수치형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 17136.4,
+   "top_chunk": "im_household_2025#본문#4",
+   "answered": true,
+   "answer": "iM뱅크 가계대출 설명서의 인지세 표 기준으로, **대출금액 1억 5천만원**은 **1억원 초과 ~ 10억원 이하** 구간에 해당합니다.  \n따라서 **인지세는 35만원**, **고객 부담분은 17만 5천원**입니다. [1]",
+   "grade": "insufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "관련 조항은 찾았지만 질문에 답하기에는 근거가 부족합니다. 확인된 내용만 안내드립니다."
+   ],
+   "filters": {
+    "doc_type": "상품설명서",
+    "issuer": "iM뱅크",
+    "product": "가계대출",
+    "generation": null,
+    "effective_on": "latest",
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 15042,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 759,
+     "input_token_details": {
+      "cache_read": 5632,
+      "audio": 0
+     },
+     "input_tokens": 14283
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3557,
+     "output_tokens": 85,
+     "total_tokens": 3642,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "im_household_2025#본문#4",
+    "im_household_2025#본문#1",
+    "im_household_2025#본문#5",
+    "im_household_2025#본문#3",
+    "im_household_2025#본문#2",
+    "im_household_2025#본문#21",
+    "im_household_2025#본문#10",
+    "im_household_2025#본문#22"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S21",
+   "type": "표수치형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 0.0,
+   "latency_ms": 5043.0,
+   "top_chunk": "kbcard_rates_html#본문#1",
+   "answered": false,
+   "answer": "문서에서 근거를 찾지 못했습니다. 질문을 조금 더 구체적으로 알려주시거나 상담 창구로 문의해 주세요.",
+   "grade": "none",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "abstain"
+   ],
+   "notices": [
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "KB국민카드",
+    "product": "정기예금",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5403,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 192,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 5211
+    }
+   },
+   "chunk_ids": [
+    "kbcard_rates_html#본문#1",
+    "kbcard_delinquency_html#본문#12",
+    "kbcard_rates_html#본문#14",
+    "kbcard_rates_html#본문#11",
+    "kbcard_rates_html#본문#10",
+    "kbcard_overseas_html#본문#20",
+    "kbcard_rates_html#본문#12",
+    "kbcard_rates_html#본문#13"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 0.0
+  },
+  {
+   "id": "S22",
+   "type": "표수치형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 0.5,
+   "latency_ms": 19899.6,
+   "top_chunk": "kbcard_rates_html#본문#13",
+   "answered": true,
+   "answer": "KB국민카드 상품공시실 기준 **장기카드대출(카드론) 수수료율 범위는 5.90%~19.95%**입니다.  \n기준일은 **2026년 2월 3일**로 표시되어 있습니다. 다만, 근거에는 장기카드대출의 **세부 점수구간별 수수료율 표가 잘려 있어**, 범위만 확인할 수 있습니다. [2]",
+   "grade": "sufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   ],
+   "filters": {
+    "doc_type": "공시",
+    "issuer": "KB국민카드",
+    "product": "장기카드대출(카드론)",
+    "generation": null,
+    "effective_on": "latest",
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 16633,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 661,
+     "input_token_details": {
+      "cache_read": 7680,
+      "audio": 0
+     },
+     "input_tokens": 15972
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 9300,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 231,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 9069
+    }
+   },
+   "chunk_ids": [
+    "kbcard_rates_html#본문#13",
+    "kbcard_rates_html#본문#1",
+    "kbcard_rates_html#본문#11",
+    "kbcard_rates_html#본문#12",
+    "kbcard_rates_html#본문#10",
+    "kbcard_rates_html#본문#6",
+    "kbcard_rates_html#본문#14",
+    "kbcard_rates_html#본문#4"
+   ],
+   "calc": {
+    "abstain_reason": "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   },
+   "recall@1": 0.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S23",
+   "type": "표수치형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 5,
+   "mrr": 1.0,
+   "latency_ms": 15782.9,
+   "top_chunk": "woorisb_rotating_html#본문#3",
+   "answered": true,
+   "answer": "3개월 이상 6개월 미만 예치 후 중도해지하면 **약정이율 × 55%**가 적용됩니다.  \n기준은 **세전, 연이율**입니다. 다만 **실제 금액**은 해당 상품의 **약정이율**을 알아야 계산할 수 있습니다. [1]",
+   "grade": "insufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "관련 조항은 찾았지만 질문에 답하기에는 근거가 부족합니다. 확인된 내용만 안내드립니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "우리금융저축은행",
+    "product": "회전정기예금",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 13925,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 689,
+     "input_token_details": {
+      "cache_read": 5632,
+      "audio": 0
+     },
+     "input_tokens": 13236
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3222,
+     "output_tokens": 76,
+     "total_tokens": 3298,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "woorisb_rotating_html#본문#3",
+    "woorisb_rotating_html#본문#1",
+    "woorisb_rotating_html#본문#2",
+    "woorisb_rotating_html#본문#5",
+    "woorisb_rotating_html#본문#4"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S24",
+   "type": "표수치형",
+   "answerable": true,
+   "n_gold": 3,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 7724.2,
+   "top_chunk": "kbcard_overseas_html#본문#20",
+   "answered": true,
+   "answer": "KB국민카드 해외이용 시 **아멕스(AMEX) 국제브랜드 수수료율은 1.4%**입니다.  \n근거 표에는 **신용카드 가맹점이용 및 단기카드대출(현금서비스)** 항목의 국제브랜드 수수료로 아멕스 1.4%가 기재되어 있습니다. [1]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "질문에 값이 없어(service_fee_pct, tt_rate, usd) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "KB국민카드",
+    "product": "신용카드",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5362,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 141,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 5221
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 9040,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 157,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 8883
+    }
+   },
+   "chunk_ids": [
+    "kbcard_overseas_html#본문#20",
+    "kbcard_overseas_html#본문#19",
+    "kbcard_rates_html#본문#1",
+    "kbcard_rates_html#본문#12",
+    "kbcard_overseas_html#본문#8",
+    "kbcard_rates_html#본문#11",
+    "kbcard_rates_html#본문#14",
+    "kbcard_rates_html#본문#6"
+   ],
+   "calc": {
+    "abstain_reason": "질문에 값이 없어(service_fee_pct, tt_rate, usd) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S25",
+   "type": "표수치형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 8908.0,
+   "top_chunk": "hana_household_loan_2014#본문#6",
+   "answered": true,
+   "answer": "연체기간이 **1개월 초과 3개월 이하**일 때, **연체가산이자율은 연 8%**이고, **연체이자율 상한은 연 17%**입니다.  \n참고로 연체이자율은 **대출이자율 + 연체기간별 연체가산이자율**로 적용된다고 되어 있습니다. [1]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": "상품설명서",
+    "issuer": "하나은행",
+    "product": "가계대출",
+    "generation": null,
+    "effective_on": "2014-04-30",
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5178,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 217,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4961
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8603,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 258,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 8345
+    }
+   },
+   "chunk_ids": [
+    "hana_household_loan_2014#본문#6",
+    "hana_household_loan_2014#본문#1",
+    "hana_household_loan_2014#본문#8",
+    "hana_household_loan_2014#본문#10",
+    "hana_household_loan_2014#본문#7",
+    "hana_household_loan_2014#본문#5",
+    "hana_household_loan_2014#본문#9",
+    "hana_household_loan_2014#본문#2"
+   ],
+   "calc": {
+    "tool": "delinquency_interest",
+    "value": 0,
+    "unit": "원",
+    "abstain_reason": null
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S26",
+   "type": "복합형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 8799.6,
+   "top_chunk": "fss_case_001#본문#13",
+   "answered": true,
+   "answer": "신용카드사가 회원의 **이용한도를 감액**할 때는, 원칙적으로 **적용예정일로부터 14일 이전**에 통지해야 합니다. 통지 방법은 근거상 **이용대금명세서, 서면, 전자우편(E-MAIL), 휴대폰 문자메시지 서비스(SMS)** 등이며, **2가지 이상의 방법**으로 통지하는 것으로 되어 있습니다. 다만 약관 사례에서는 **휴대폰 문자메시지 서비스 또는 전화로 미리 알리고**, 휴대폰 번호를 알 수 없거나 문자가 전송되지 않으면 **감액 당일에 전자우편 또는 서면으로 통지**하는 경우도 보입니다. [1][2][3][4][5][6]\n\n관련 분쟁조정사례도 있습니다. 근거 [1] 사례에서는 신용카드사의 **이용한도 증액·감액 시 사전통지 및 사유 안내 여부**가 쟁점이었고, 금융감독원은 카드사가 **이용한도 변경 안내 및 한도 조정 결과 안내를 문자메시지 등으로 안내했다**고 소명했다고 적고 있습니다. 다만 근거에는 **구체적인 분쟁조정 결론의 상세 내용**은 더 제시되어 있지 않습니다. [1]\n\n원하시면 제가 위 근거만 바탕으로 **“통지 시점/방법”만 표로 정리**해드릴게요.",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "신용카드사",
+    "product": "신용카드",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 4326,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 274,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4052
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 2856,
+     "output_tokens": 327,
+     "total_tokens": 3183,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "fss_case_001#본문#13",
+    "hanacard_diff_2016#제10조#1",
+    "hanacard_std_2017#제7조의2#1",
+    "hanacard_diff_2016#제7조의2#1",
+    "hanacard_diff_2016#제10조#2",
+    "hanacard_std_2017#제10조#1",
+    "sc_card_std_2021#제7조의2#1",
+    "hanacard_diff_2016#제7조#1"
+   ],
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S27",
+   "type": "복합형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 0.0,
+   "latency_ms": 9758.1,
+   "top_chunk": "hanacard_std_2017#제39조#1",
+   "answered": true,
+   "answer": "질문하신 경우, **가족카드를 가족이 사용한 대금은 원칙적으로 본인회원(카드 명의자)이 책임지는 구조**로 되어 있습니다. 다만, **이의가 있으면 카드사에 이의를 제기하고, 조사 후에도 다투면 금융감독원 분쟁조정을 요청할 수 있습니다.**\n\n## 1) 약관 조항\n- **본인회원의 책임**:  \n  약관은 **본인회원이 본인 및 가족회원의 카드에 관한 행위와 발생된 채무 전액에 대하여 책임을 진다**고 정하고 있습니다.  \n  따라서 가족이 사용한 카드대금이라도, 약관상으로는 본인회원에게 청구될 수 있습니다. [5][6]\n\n- **가족회원의 지위**:  \n  가족회원은 본인회원이 지정하고, **대금 지급 및 기타 카드이용에 관한 책임을 본인회원이 부담할 것을 승낙한 사람**으로 정의됩니다. [3][4]\n\n## 2) 이의신청 및 분쟁조정 절차\n- 카드이용대금에 이의가 있으면 **결제일로부터 14일 이내**에 서면, 인터넷 또는 전화로 카드사에 이의를 제기할 수 있습니다.  \n- 카드사는 카드발급경위, 카드이용일시, 이용내역, 이용주체 등을 조사해 결과를 통지합니다.  \n- 조사결과에 이의가 있으면 **통지를 받은 날로부터 7일 이내**에 금융감독원에 조정을 요청할 수 있고, **분쟁조정이 완료될 때까지 이용대금을 지급하지 않을 수 있습니다.** [1][2]\n\n## 3) 분쟁조정 결과\n- 분쟁조정 결과, **카드 발급 및 이용과정에서 카드사에 책임이 있다고 밝혀지면** 카드사가 이용대금의 전액 또는 일부를 부담합니다.  \n- 반대로 **회원에게 책임이 있다고 밝혀지면** 이용대금이 당초 결제일에 청구된 것으로 간주되고, 카드사는 지연배상금을 부담시킬 수 있습니다. [1][2]\n\n## 4) 답변의 핵심\n따라서, **가족에게 카드를 빌려준 경우라도 약관상 본인회원이 그 사용대금을 부담하는 것이 원칙**입니다.  \n다만, **그 사용이 본인회원의 승인 범위를 벗어났는지, 카드 발급·이용 과정에 카드사 책임이 있는지**는 이의신청 및 분쟁조정 절차에서 다툴 수 있습니다. [1][2][5][6]\n\n원하시면 제가 다음 단계로 **“가족이 쓴 금액을 본인이 내야 하는지”를 상황별로(가족카드/본카드 대여/도난·분실/무단사용) 나눠서** 정리해드릴 수 있습니다. [1][2][5][6]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": null,
+    "product": "신용카드",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 3070,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 274,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 2796
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 1598,
+     "output_tokens": 667,
+     "total_tokens": 2265,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "hanacard_std_2017#제39조#1",
+    "sc_card_std_2021#제39조#1",
+    "sc_card_std_2021#제2조#1",
+    "hanacard_std_2017#제2조#1",
+    "sc_card_std_2021#제30조#1",
+    "hanacard_std_2017#제30조#1",
+    "sc_card_std_2021#제3조의2#1",
+    "hanacard_std_2017#제7조#2"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 0.0
+  },
+  {
+   "id": "S28",
+   "type": "복합형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 0.0,
+   "latency_ms": 4307.5,
+   "top_chunk": "kakao_deposit_terms_2024#제4조#1",
+   "answered": false,
+   "answer": "문서에서 근거를 찾지 못했습니다. 질문을 조금 더 구체적으로 알려주시거나 상담 창구로 문의해 주세요.",
+   "grade": "none",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "abstain"
+   ],
+   "notices": [
+    "필터로 0건이 나와 조건을 완화했습니다."
+   ],
+   "filters": {
+    "doc_type": "특약",
+    "issuer": null,
+    "product": "실손의료보험",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 2090,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 199,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 1891
+    }
+   },
+   "chunk_ids": [
+    "kakao_deposit_terms_2024#제4조#1",
+    "kakao_deposit_terms_2024#제10조#1",
+    "kakao_deposit_terms_2024#제3조#1",
+    "kakao_deposit_terms_2024#제8조#1",
+    "kakao_deposit_terms_2024#제1조#1",
+    "kakao_deposit_terms_2024#제5조#1",
+    "kakao_deposit_terms_2024#제9조#1",
+    "kakao_deposit_terms_2024#제1조#5"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 0.0
+  },
+  {
+   "id": "S29",
+   "type": "복합형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 8991.7,
+   "top_chunk": "fss_case_005#본문#13",
+   "answered": true,
+   "answer": "네. **본인부담상한제로 국민건강보험공단에서 이미 환급받았거나 환급받을 예정인 부분은 실손보험에서 보상하지 않습니다.** 따라서 그 금액을 실손보험금으로 **중복해서 받기는 어렵습니다**.  \n다만, 질문에 주신 근거 기준으로는 **실손보험 약관에 따라 본인부담상한제 관련 부분은 보상 제외**로 안내되어 있고, 금융감독원 사례에서도 **본인부담상한액 초과액은 실손보험금 지급 대상이 아니라고 안내**하고 있습니다. [1][2][3][4][5][6]\n\n정리하면:\n- **공단 환급금 자체**: 실손보험금으로 **보상 제외**\n- **실제 본인부담한 금액 중 공단 환급 대상이 아닌 부분**: 약관 범위 내에서 별도 검토 대상일 수 있음  \n  다만 이 부분은 **가입 상품 약관과 실제 청구내역**을 봐야 합니다. [1][2][3][4][5][6]\n\n[1][2][3][4][5][6]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "건강보험공단",
+    "product": "실손의료보험",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5434,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 247,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 5187
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 9132,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 337,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 8795
+    }
+   },
+   "chunk_ids": [
+    "fss_case_005#본문#13",
+    "sf_silson_2605#제10조#7",
+    "law_silson_std_pdf#제42조#30",
+    "law_silson_std_pdf#제4조#8",
+    "sf_silson_2605#제55조#5",
+    "db_silson_2101#제12조#26",
+    "sf_silson_2605#제4조#8",
+    "law_silson_std_pdf#제42조#18"
+   ],
+   "calc": {
+    "abstain_reason": "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S30",
+   "type": "복합형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 9132.5,
+   "top_chunk": "hana_mortgage_2025#본문#27",
+   "answered": true,
+   "answer": "네, **부과될 가능성이 있습니다.**  \n근거에 따르면 하나은행 주택담보대출의 **중도상환해약금은 최초 대출취급일로부터 3년까지 적용**되고, **대출만기까지 3개월 미만이 남은 경우에만 부과되지 않습니다**. 따라서 **3년 만기 대출을 2년 11개월 시점에 전액 상환**하면, 만기까지 약 1개월이 남은 시점이라도 **“만기까지 3개월 미만” 조건에 해당하므로 중도상환해약금이 부과되지 않는 것으로 해석됩니다.** 다만, 이 판단은 제공된 문구에만 근거한 것이며 실제 적용은 대출계약 조건과 은행 안내로 최종 확인이 필요합니다. [1][2][3]\n\n참고로 근거에는 **대출계약 성립일로부터 3년 이내 조기상환 시 중도상환해약금이 발생할 수 있다**는 안내도 함께 있습니다. [5][6]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "문서의 해당 항목이 비어 있어(fee_rate_pct) 계산할 수 없습니다. 개별 계약서 또는 창구 확인이 필요합니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "하나은행",
+    "product": "주택담보대출",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5001,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 245,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4756
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8383,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 488,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 7895
+    }
+   },
+   "chunk_ids": [
+    "hana_mortgage_2025#본문#27",
+    "hana_mortgage_2025#본문#5",
+    "hana_mortgage_2025#본문#2",
+    "hana_mortgage_2025#본문#24",
+    "hana_mortgage_2025#본문#19",
+    "hana_mortgage_2025#본문#41",
+    "hana_mortgage_2025#본문#4",
+    "hana_mortgage_2025#본문#26"
+   ],
+   "calc": {
+    "abstain_reason": "문서의 해당 항목이 비어 있어(fee_rate_pct) 계산할 수 없습니다. 개별 계약서 또는 창구 확인이 필요합니다."
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S31",
+   "type": "계산형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 14290.8,
+   "top_chunk": "nh_jangbyeong_2026#본문#3",
+   "answered": true,
+   "answer": "장병내일준비적금 **24개월, 기본이자율 5.00%**를 **7개월 만에 해지**하면, 근거상 **6개월 이상 ~ 9개월 미만** 구간의 중도해지이자율을 적용합니다.  \n이 구간의 산식은 **기본이자율 × 60% × 경과월수 ÷ 계약월수**입니다.  \n따라서 현재 주어진 정보만으로는 **정확한 금액/최종 연이율**을 확정하려면 **경과월수(7개월)와 계약월수(24개월)**를 대입해야 합니다. 다만, 근거에 따르면 이 구간 적용 대상입니다. [1][3]\n\n계산하면:  \n**5.00% × 60% × 7/24 = 0.875%**  \n근거의 “소수 셋째자리까지 적용(소수 넷째자리에서 절사)” 기준을 따르면 **중도해지이자율은 연 0.875%**입니다. [3]\n\n※ 단, 중도해지 최저이자율 **0.1%**가 별도로 있으나, 위 계산값은 이를 초과합니다. [3]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "근거 문서의 심의필 유효기간이 지났습니다(2023-02-01). 현행 조건은 다를 수 있습니다.",
+    "필수 파라미터 누락: 적용률 또는 차감률"
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": null,
+    "product": "장병내일준비적금",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5059,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 301,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4758
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8482,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 573,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 7909
+    }
+   },
+   "chunk_ids": [
+    "nh_jangbyeong_2026#본문#3",
+    "nh_jangbyeong_2026#본문#8",
+    "nh_jangbyeong_2026#본문#4",
+    "shinhan_orakssil_2025#본문#2",
+    "kbstar_deposit_2021#본문#4",
+    "kakao_deposit_2026_txt#본문#6",
+    "nh_jangbyeong_2026#본문#5",
+    "nh_jangbyeong_2026#본문#1"
+   ],
+   "calc": {
+    "tool": "savings_early_termination_rate",
+    "value": null,
+    "unit": "%",
+    "abstain_reason": "필수 파라미터 누락: 적용률 또는 차감률"
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S32",
+   "type": "계산형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 7699.9,
+   "top_chunk": "hana_mortgage_2025#본문#27",
+   "answered": true,
+   "answer": "하나은행 예시 기준으로, **3년 만기 주담대를 2년 후 1억원 상환**하고 **중도상환해약금 요율이 1.4%**라면 **466,666원**입니다.  \n(윤년 기준 예시는 **467,518원**입니다.) [1]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "하나은행",
+    "product": "주택담보대출",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 4967,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 217,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4750
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8152,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 171,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 7981
+    }
+   },
+   "chunk_ids": [
+    "hana_mortgage_2025#본문#27",
+    "hana_mortgage_2025#본문#5",
+    "hana_mortgage_2025#본문#2",
+    "hana_mortgage_2025#본문#24",
+    "hana_mortgage_2025#본문#19",
+    "hana_mortgage_2025#본문#41",
+    "hana_mortgage_2025#본문#36",
+    "hana_mortgage_2025#본문#14"
+   ],
+   "calc": {
+    "tool": "prepayment_fee",
+    "value": 466666,
+    "unit": "원",
+    "abstain_reason": null
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S33",
+   "type": "계산형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 9098.8,
+   "top_chunk": "im_household_2025#본문#15",
+   "answered": true,
+   "answer": "iM뱅크 가계대출 **원금 1억 2천만원**, **약정이자율 연 5%**, **연체가산이자율 연 3%**에서, **월 이자 50만원**을 미납한 뒤 **연체 발생 후 2개월 시점**에 납부하는 예시는 **연체이자 80만 3,333원**입니다.  \n구성은 **연체발생~1개월분 3,333원 + 1~2개월분 80만원 = 합계 803,333원**입니다.  \n다만 근거에 따르면 **실제 납부금액은 연체이자에 약정이자 및 분할상환금이 포함될 수 있어** 대출조건에 따라 달라질 수 있습니다. [1][4]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "질문에 값이 없어(penalty_add_pct) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "iM뱅크",
+    "product": "가계대출",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5340,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 297,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 5043
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8713,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 278,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 8435
+    }
+   },
+   "chunk_ids": [
+    "im_household_2025#본문#15",
+    "im_household_2025#본문#16",
+    "im_household_2025#본문#2",
+    "im_household_2025#본문#14",
+    "im_household_2025#본문#21",
+    "im_household_2025#본문#17",
+    "im_household_2025#본문#3",
+    "im_household_2025#본문#13"
+   ],
+   "calc": {
+    "abstain_reason": "질문에 값이 없어(penalty_add_pct) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S34",
+   "type": "계산형",
+   "answerable": true,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 21159.0,
+   "top_chunk": "kbcard_overseas_html#본문#20",
+   "answered": true,
+   "answer": "원화 청구금액은 **1,417,500원**입니다.  \n기준: **US$1,000**, **전신환매도율 1,400원/USD**, **마스터카드 브랜드 수수료 1.0%**, **해외서비스 수수료 0.25%**. 계산식은 미화금액을 전신환매도율로 환산한 뒤 브랜드 수수료와 해외서비스 수수료를 더하는 방식입니다. [2][1]",
+   "grade": "insufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "관련 조항은 찾았지만 질문에 답하기에는 근거가 부족합니다. 확인된 내용만 안내드립니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "KB국민카드",
+    "product": "신용카드",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 15913,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 1030,
+     "input_token_details": {
+      "cache_read": 5632,
+      "audio": 0
+     },
+     "input_tokens": 14883
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8627,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 255,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 8372
+    }
+   },
+   "chunk_ids": [
+    "kbcard_overseas_html#본문#20",
+    "kbcard_overseas_html#본문#19",
+    "kbcard_overseas_html#본문#1",
+    "kbcard_overseas_html#본문#8",
+    "kbcard_rates_html#본문#3",
+    "kbcard_overseas_html#본문#12",
+    "kbcard_rates_html#본문#12",
+    "kbcard_overseas_html#본문#13"
+   ],
+   "calc": {
+    "tool": "card_overseas_charge",
+    "value": 1417500,
+    "unit": "원",
+    "abstain_reason": null
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S35",
+   "type": "계산형",
+   "answerable": true,
+   "n_gold": 5,
+   "n_retrieved": 8,
+   "mrr": 0.0,
+   "latency_ms": 22012.9,
+   "top_chunk": "law_silson_std_pdf#제42조#8",
+   "answered": true,
+   "answer": "의원 기준 **현행 실손 표준약관의 기본형 급여 통원 공제금액은 1회당 1만원과 보장대상 의료비의 20% 중 큰 금액**으로 정해집니다.  \n다만 질문하신 **“의원”**은 근거에 나온 공제금액 표에서 **「국민건강보험법」 제42조제1항에 따른 의료기관(제1호)**에 해당하는 경우로 보이며, 통원은 **외래 및 처방·조제를 합산한 1회 기준**으로 공제금액을 뺀 금액을 보상합니다. 근거상 통원은 **통원 1회당(외래 및 처방·조제 합산) 본인부담금에서 공제금액을 제외**해 계산합니다.  \n정확한 보장대상 범위는 표의 해당 의료기관 분류에 따라 적용됩니다.  \n[3]",
+   "grade": "sufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "질문에 값이 없어(copay, fixed_deductible) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   ],
+   "filters": {
+    "doc_type": "표준약관",
+    "issuer": null,
+    "product": "실손의료보험",
+    "generation": null,
+    "effective_on": "latest",
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 16020,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 752,
+     "input_token_details": {
+      "cache_read": 4608,
+      "audio": 0
+     },
+     "input_tokens": 15268
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8625,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 336,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 8289
+    }
+   },
+   "chunk_ids": [
+    "law_silson_std_pdf#제42조#8",
+    "law_silson_std_pdf#제3조#39",
+    "sonsa_silson_std_2024#제42조#4",
+    "sonsa_silson_std_2024#제3조#2",
+    "law_silson_std_pdf#제3조#22",
+    "law_silson_std_pdf#제5조#8",
+    "law_silson_std_pdf#제42조#19",
+    "law_silson_std_pdf#제5조#17"
+   ],
+   "calc": {
+    "abstain_reason": "질문에 값이 없어(copay, fixed_deductible) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   },
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 0.0
+  },
+  {
+   "id": "S36",
+   "type": "유사상품비교형",
+   "answerable": true,
+   "n_gold": 29,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 11095.7,
+   "top_chunk": "law_silson_std_pdf#제3조#42",
+   "answered": true,
+   "answer": "실손의료보험 **통원 치료 시 공제금액은 보장종목과 의료기관 종류에 따라 정해집니다.**\n\n확인되는 기준은 다음과 같습니다.\n\n- **급여 통원**:  \n  통원 1회당(외래 및 처방조제 합산) **「국민건강보험법」상 요양급여 또는 「의료급여법」상 의료급여의 본인부담금에서 표의 ‘통원항목별 공제금액’을 뺀 금액**으로 보상합니다.  \n  이때 공제금액은 의료기관 종류에 따라 표에 정해진 금액을 적용합니다. [2][5]\n\n- **비급여 통원**:  \n  통원 1회당(외래 및 처방·조제비 합산) **비급여의료비(비급여병실료 제외, 본인이 실제 부담한 금액)에서 ‘통원항목별 공제금액’을 뺀 금액**으로 보상합니다. [3][6]\n\n- **공제금액 자체는 표에서 정함**:  \n  예시로 확인되는 공제금액 기준에는  \n  - **3만원과 보장대상 의료비의 30% 중 큰 금액** [3][4]  \n  - **4만5천원과 보장대상 의료비의 50% 중 큰 금액** [1]  \n  이 제시되어 있습니다.  \n  다만, **어느 경우에 어떤 금액을 적용하는지는 근거에 나온 표의 세부 항목에 따라 달라집니다.** [1][3][4]\n\n- **산정 단위와 기간**:  \n  통원은 **1회당** 기준으로 계산하며, **매년 계약해당일부터 1년간 통원 100회(또는 일부 문구에서는 최대 90회) 한도**가 적혀 있습니다. 문서별로 표현이 달라 보여, 정확한 적용은 해당 약관의 문구를 확인해야 합니다. [1][3][6]\n\n요약하면, **통원 공제금액은 “통원 1회당 실제 부담 의료비”에서 약관의 표에 정한 공제금액을 빼는 방식으로 정해지며, 공제금액은 의료기관 종류와 급여/비급여 여부에 따라 달라집니다.**  \n근거에 나온 표가 일부만 보여서, 전체 항목별 공제금액을 모두 확정해 답하기는 어렵습니다. [1][2][3][5][6]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "질문에 값이 없어(copay, fixed_deductible) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": null,
+    "product": "실손의료보험",
+    "generation": null,
+    "effective_on": "latest",
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 5619,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 212,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 5407
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 10061,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 798,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 9263
+    }
+   },
+   "chunk_ids": [
+    "law_silson_std_pdf#제3조#42",
+    "law_silson_std_pdf#제42조#8",
+    "law_silson_std_pdf#제3조#22",
+    "sonsa_silson_std_2024#제42조#9",
+    "law_silson_std_pdf#제42조#19",
+    "law_silson_std_pdf#제5조#8",
+    "law_silson_std_pdf#제5조#17",
+    "law_silson_std_pdf#제42조#30"
+   ],
+   "calc": {
+    "abstain_reason": "질문에 값이 없어(copay, fixed_deductible) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S37",
+   "type": "유사상품비교형",
+   "answerable": true,
+   "n_gold": 2,
+   "n_retrieved": 8,
+   "mrr": 1.0,
+   "latency_ms": 7894.0,
+   "top_chunk": "sc_card_std_2021#제31조#1",
+   "answered": true,
+   "answer": "하나카드와 SC제일은행 신용카드 표준약관 모두, 리볼빙의 **약정결제비율 선택 범위는 이용금액의 10% 이상 100% 이하**입니다.  \n다만, **최소결제비율은 10% 이상**으로 신용상태 등에 따라 차등 적용된다고 되어 있습니다.  \n즉, 선택 범위는 동일하게 **10~100% 이내**입니다. [1][2]",
+   "grade": "sufficient",
+   "retry_count": 0,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "질문에 값이 없어(normal_rate_pct) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   ],
+   "filters": {
+    "doc_type": "표준약관",
+    "issuer": "하나카드, SC제일은행",
+    "product": "신용카드",
+    "generation": null,
+    "effective_on": "latest",
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 4399,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 224,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 4175
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 6915,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 174,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 6741
+    }
+   },
+   "chunk_ids": [
+    "sc_card_std_2021#제31조#1",
+    "hanacard_std_2017#제31조#1",
+    "hanacard_std_2017#제35조#1",
+    "sc_card_std_2021#제32조#1",
+    "hanacard_std_2017#제36조#1",
+    "sc_card_std_2021#제35조#1",
+    "hanacard_std_2017#제32조#1",
+    "sc_card_std_2021#제34조#1"
+   ],
+   "calc": {
+    "abstain_reason": "질문에 값이 없어(normal_rate_pct) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   },
+   "recall@1": 1.0,
+   "recall@3": 1.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S38",
+   "type": "유사상품비교형",
+   "answerable": true,
+   "n_gold": 3,
+   "n_retrieved": 8,
+   "mrr": 0.0,
+   "latency_ms": 19369.7,
+   "top_chunk": "hana_credit_terms_2009#제7조#1",
+   "answered": true,
+   "answer": "근거로 확인되는 **제7조 제2항의 사전 통지 기한 변화**는 다음과 같습니다.\n\n- **2013년 판**: 기한이익 상실일 **3영업일 전까지** 통지해야 했고, 그때까지 통지하지 않으면 **실제 통지가 도달한 날부터 3영업일이 경과한 날**에 기한이익이 상실되었습니다.\n- **2024년 판**: 제공된 근거 안에는 **2024년 판의 제7조 제2항 내용이 없습니다.** 그래서 2024년 판과의 정확한 비교는 확인할 수 없습니다.\n\n즉, **2013년 판은 “3영업일 전” 통지 규정이 명시되어 있지만, 2024년 판은 근거 부족으로 확인 불가**입니다.  \n2024년 판 조문 원문을 주시면 정확히 비교해드릴 수 있습니다. [1]",
+   "grade": "insufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "관련 조항은 찾았지만 질문에 답하기에는 근거가 부족합니다. 확인된 내용만 안내드립니다."
+   ],
+   "filters": {
+    "doc_type": "약관",
+    "issuer": "하나은행",
+    "product": "여신거래",
+    "generation": null,
+    "effective_on": "2013-01-01",
+    "exclude_synthetic": false
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 14384,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 836,
+     "input_token_details": {
+      "cache_read": 5632,
+      "audio": 0
+     },
+     "input_tokens": 13548
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "input_tokens": 3295,
+     "output_tokens": 211,
+     "total_tokens": 3506,
+     "input_token_details": {
+      "audio": 0,
+      "cache_read": 0
+     },
+     "output_token_details": {
+      "audio": 0,
+      "reasoning": 0
+     }
+    }
+   },
+   "chunk_ids": [
+    "hana_credit_terms_2009#제7조#1",
+    "hana_credit_terms_2009#제8조#1",
+    "hana_credit_terms_2009#제7조#2",
+    "hana_credit_terms_2009#본문#1",
+    "hana_credit_terms_2009#제13조#1",
+    "hana_credit_terms_2009#제10조#1",
+    "hana_credit_terms_2009#제20조#1",
+    "hana_credit_terms_2009#제17조#1"
+   ],
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 0.0
+  },
+  {
+   "id": "S39",
+   "type": "미답변형",
+   "answerable": false,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 0.16666666666666666,
+   "latency_ms": 20861.9,
+   "top_chunk": "abl_cancer_2404#제35조#4",
+   "answered": true,
+   "answer": "정확한 **5년 후 해약환급금 금액**은 제공된 근거만으로는 확인할 수 없습니다.  \n근거에는 **해약환급금이 산출방법서에 따라 계산된다**고만 되어 있고, **경과기간별 해약환급금 표는 계약자에게 제공된다**고만 나와 있으며, **5년 시점의 구체 금액**은 제시되어 있지 않습니다. 또한 해약환급금은 **납입한 보험료보다 적거나 없을 수도** 있습니다.  \n따라서 현재 확인되는 내용은 **“5년 후 해약환급금은 산출방법서와 경과기간별 표를 봐야 하며, 이 자료 없이는 정확한 금액을 알 수 없다”**는 점입니다. [4][6][1]",
+   "grade": "insufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "필터로 0건이 나와 조건을 완화했습니다.",
+    "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다.",
+    "관련 조항은 찾았지만 질문에 답하기에는 근거가 부족합니다. 확인된 내용만 안내드립니다."
+   ],
+   "filters": {
+    "doc_type": null,
+    "issuer": "ABL생명",
+    "product": "암보험",
+    "generation": null,
+    "effective_on": null,
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 14511,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 651,
+     "input_token_details": {
+      "cache_read": 5632,
+      "audio": 0
+     },
+     "input_tokens": 13860
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 8051,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 376,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 7675
+    }
+   },
+   "chunk_ids": [
+    "abl_cancer_2404#제35조#4",
+    "abl_cancer_2404#제35조#2",
+    "abl_cancer_2404#제35조#3",
+    "abl_cancer_2404#제45조#9",
+    "abl_cancer_2404#제35조#1",
+    "abl_cancer_2404#제34조#2",
+    "abl_cancer_2404#제35조#6",
+    "abl_cancer_2404#제9조#1"
+   ],
+   "calc": {
+    "abstain_reason": "이 값은 약관·설명서에 없고 산출방법서 등 비공개 문서에 있습니다. 해당 금융회사 확인이 필요합니다."
+   },
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 0.0,
+   "recall@10": 1.0
+  },
+  {
+   "id": "S40",
+   "type": "미답변형",
+   "answerable": false,
+   "n_gold": 1,
+   "n_retrieved": 8,
+   "mrr": 0.25,
+   "latency_ms": 17984.7,
+   "top_chunk": "hana_household_loan_2014#본문#1",
+   "answered": true,
+   "answer": "하나은행 가계대출 상품설명서(2014.04)에 제시된 **중도상환수수료율은 숫자가 비어 있어, 근거에서 확인되지 않습니다.**  \n해당 문서에는 **“중도상환대출금액 x (    ) % x (대출잔여일수÷대출기간)”**이라고만 되어 있어, 수수료율의 구체적 수치가 기재되어 있지 않습니다. 따라서 이 자료만으로는 몇 %인지 확정할 수 없습니다. [4]",
+   "grade": "insufficient",
+   "retry_count": 2,
+   "trace": [
+    "preprocess",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "retry",
+    "rewrite",
+    "selfquery",
+    "retrieve",
+    "grade",
+    "calc",
+    "answer"
+   ],
+   "notices": [
+    "이 답변은 AI가 검색된 문서를 근거로 생성했습니다. 최종 확인은 원문과 상담 창구를 통해 주세요.",
+    "질문에 값이 없어(amount, fee_rate_pct) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다.",
+    "관련 조항은 찾았지만 질문에 답하기에는 근거가 부족합니다. 확인된 내용만 안내드립니다."
+   ],
+   "filters": {
+    "doc_type": "상품설명서",
+    "issuer": "하나은행",
+    "product": "가계대출",
+    "generation": null,
+    "effective_on": "2014-04-01",
+    "exclude_synthetic": true
+   },
+   "usage": {
+    "gpt-5.4-nano-2026-03-17": {
+     "total_tokens": 14326,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 571,
+     "input_token_details": {
+      "cache_read": 5632,
+      "audio": 0
+     },
+     "input_tokens": 13755
+    },
+    "gpt-5.4-mini-2026-03-17": {
+     "total_tokens": 7777,
+     "output_token_details": {
+      "reasoning": 0,
+      "audio": 0
+     },
+     "output_tokens": 200,
+     "input_token_details": {
+      "cache_read": 0,
+      "audio": 0
+     },
+     "input_tokens": 7577
+    }
+   },
+   "chunk_ids": [
+    "hana_household_loan_2014#본문#1",
+    "hana_household_loan_2014#본문#5",
+    "hana_household_loan_2014#본문#4",
+    "hana_household_loan_2014#본문#3",
+    "hana_household_loan_2014#본문#10",
+    "hana_household_loan_2014#본문#6",
+    "hana_household_loan_2014#본문#9",
+    "hana_household_loan_2014#본문#7"
+   ],
+   "calc": {
+    "abstain_reason": "질문에 값이 없어(amount, fee_rate_pct) 계산하지 않았습니다. 금액과 기간을 알려주시면 계산해 드립니다."
+   },
+   "recall@1": 0.0,
+   "recall@3": 0.0,
+   "recall@5": 1.0,
+   "recall@10": 1.0
+  }
+ ]
+}

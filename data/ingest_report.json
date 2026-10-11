@@ -1,0 +1,61 @@
+{
+ "generated_at": "2026-10-01T13:42:07+00:00",
+ "documents": 49,
+ "chunks": 3690,
+ "routes": {
+  "done": 46,
+  "failed": 3
+ },
+ "parsers": {
+  "pdfplumber": 29,
+  "none": 2,
+  "xml": 2,
+  "html": 14,
+  "text": 1,
+  "pymupdf": 1
+ },
+ "verdicts": {
+  "reparse": 5,
+  "fail": 2,
+  "pass": 40,
+  "ocr": 2
+ },
+ "llm_repaired": [
+  "knia_4000"
+ ],
+ "synthetic_degraded": [],
+ "failed": [
+  {
+   "doc_id": "law_silson_std_hwp",
+   "reasons": [
+    "지원하지 않는 형식"
+   ],
+   "warnings": [
+    "지원하지 않는 형식",
+    "지원하지 않는 형식"
+   ]
+  },
+  {
+   "doc_id": "knia_3500_scan",
+   "reasons": [
+    "OCR 필요 8쪽"
+   ],
+   "warnings": [
+    "OCR 캐시 없음: knia_3500_scan.json. data/ocr_cache/ 에 캐시를 넣으세요 (수강생은 디스코드의 ocr_cache.zip, 강사는 scripts/make_ocr_cache.py).",
+    "OCR 결과가 없어 제외한 페이지: [1, 2, 3, 4, 5]",
+    "OCR 필요 8쪽"
+   ]
+  },
+  {
+   "doc_id": "fss_deposit_terms_2022_hwpx",
+   "reasons": [
+    "지원하지 않는 형식"
+   ],
+   "warnings": [
+    "지원하지 않는 형식",
+    "지원하지 않는 형식"
+   ]
+  }
+ ],
+ "skipped_by_checkpoint": 0
+}

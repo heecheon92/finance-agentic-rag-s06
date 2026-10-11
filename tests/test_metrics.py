@@ -101,3 +101,38 @@ def test_reaggregating_a_saved_result_reproduces_its_summary():
     for k in ("recall@5", "mrr", "answer_rate", "false_refusal_rate", "abstain_accuracy"):
         if k in r["overall"]:
             assert o[k] == pytest.approx(r["overall"][k], abs=1e-4), k
+
+
+def test_empty_input_has_no_answer_or_latency_observations():
+    assert aggregate([], ks=(2,)) == {
+        "overall": {"recall@2": 0.0, "mrr": 0.0, "n": 0},
+        "by_type": {},
+    }
+
+
+def test_unmeasured_answers_are_excluded_from_denominators():
+    rows = [
+        {"type": "X", "mrr": 1, "answered": None, "answerable": False},
+        {"type": "X", "mrr": 0, "answered": False, "answerable": True},
+        {"type": "Y", "mrr": 1, "answered": True, "answerable": False,
+         "grade": "insufficient"},
+        {"type": "Y", "mrr": 0, "answerable": True},
+    ]
+    result = aggregate(rows, ks=())
+    assert result["overall"]["answer_rate"] == 0.5
+    assert result["overall"]["false_refusal_rate"] == 1.0
+    assert result["overall"]["abstain_accuracy"] == 1.0
+    assert "abstain_accuracy" not in result["by_type"]["X"]
+    assert "false_refusal_rate" not in result["by_type"]["Y"]
+
+
+def test_zero_latency_is_a_measurement_but_none_is_not():
+    rows = [
+        {"mrr": 0, "latency_ms": 0},
+        {"mrr": 0, "latency_ms": 100},
+        {"mrr": 0, "latency_ms": None},
+    ]
+    result = aggregate(rows, ks=())
+    assert result["overall"]["latency_ms_avg"] == 50.0
+    assert result["overall"]["latency_ms_p95"] == 0.0
+    assert result["by_type"]["?"]["n"] == 3

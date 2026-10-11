@@ -54,6 +54,11 @@ def main() -> int:
     total_month = api_month + infra_month
     api_3y = total_month * 36
     gpu_3y = args.gpu_capex + args.gpu_opex_year * 3 + infra_month * 36   # GPU 서버에도 운영 서버 비용은 든다
+    # 공통 CPU 서버 고정비는 상쇄하고 API 변동비와 GPU 구매·운영비만 비교한다.
+    api_3y_per_daily_question = m["cost_usd_per_q"] * args.usd_krw * args.days * 36
+    breakeven_daily = round(
+        (args.gpu_capex + args.gpu_opex_year * 3) / api_3y_per_daily_question
+    ) if api_3y_per_daily_question > 0 else None
     saved_month = round(m["monthly_questions"] * args.minutes_saved / 60 * args.hourly_wage)
     net_month = saved_month - total_month
     payback = None  # 초기 투자가 없는 API 안은 회수 기간이 0 이다. GPU 안만 계산한다
@@ -81,7 +86,7 @@ def main() -> int:
     if payback is not None:
         print(f"  GPU 안 회수 기간 약 {payback}개월 (절감에서 운영비를 뺀 돈으로 구매비를 갚는 데 걸리는 달)")
     print(f"\n  API 안이 GPU 안보다 3년에 {gpu_3y - api_3y:,}원 {'싸다' if gpu_3y > api_3y else '비싸다'}. "
-          f"손익이 뒤집히는 일 질문 수는 약 {round(args.daily * gpu_3y / api_3y) if api_3y else 0:,}건이다(선형 가정).")
+          f"손익이 뒤집히는 일 질문 수는 {f'약 {breakeven_daily:,}건' if breakeven_daily is not None else '산정 불가'}이다(선형 가정).")
 
     res = {"measured": {"tokens_in_avg": c["tokens_in_avg"], "tokens_out_avg": c["tokens_out_avg"],
                         "by_model": c["by_model"], "cost_usd_per_q": c["cost_usd_avg"],
@@ -91,7 +96,7 @@ def main() -> int:
            "monthly": {"questions": m["monthly_questions"], "api_krw": api_month, "infra_krw": infra_month,
                        "total_krw": total_month, "saved_krw": saved_month, "net_krw": net_month},
            "three_year": {"api_plan_krw": api_3y, "gpu_plan_krw": gpu_3y, "payback_months_gpu": payback,
-                          "breakeven_daily_questions": round(args.daily * gpu_3y / api_3y) if api_3y else None},
+                          "breakeven_daily_questions": breakeven_daily},
            "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     out = s.results_dir / "roi.json"
     out.write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
